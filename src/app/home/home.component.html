@@ -1,0 +1,46 @@
+<div class="button-row">
+  <button
+    type="submit"
+    style="width: 100%;"
+    (click)="authService.logout()"
+    class="btn btn-success btn-lg"
+  >
+    Logout
+  </button>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <input
+      type="search"
+      name="search"
+      id="search"
+      placeholder="Enter to Search Beer"
+      [(ngModel)]="searchString"
+      class="form-control"
+    />
+  </div>
+  <div class="col-12">
+    <div class="cards-list" *ngFor="let user of users | filter: searchString">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div class="flip-card-img">
+              <img class="res" [src]="user.image_url" />
+            </div>
+            <div class="flip-card-text">
+              <strong>{{ user.name }}</strong>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <div class="flip-card-img">
+              <p style="font-size: smaller;">{{ user.description }}</p>
+            </div>
+            <div class="flip-card-text">
+              <p>{{ user.tagline }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
